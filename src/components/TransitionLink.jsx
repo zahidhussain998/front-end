@@ -6,7 +6,8 @@ const TransitionLink = ({ to, label }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleClick = () => {
+  const handleClick = () => { 
+    
     if (location.pathname !== to) {
       animatePageOut(to, navigate);  // Run the page-out animation, then navigate
     }
