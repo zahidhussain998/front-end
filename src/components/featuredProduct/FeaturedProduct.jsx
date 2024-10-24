@@ -13,7 +13,6 @@ function CustomProduct({ type = 'bestselling' }) {
  const isInView = useInView(ref, {once: true})
   const {data,loding, error} = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`)
 
-
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
   };

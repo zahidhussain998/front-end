@@ -12,14 +12,12 @@ function List({selected, catId, maxPrice}) {
   const [viewMode, setViewMode] = useState("grid-4");
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const [sortBy, setSortBy] = useState("best-selling");
-  console.log('List component received catId:', catId);
 
   
     const { data, error, loding } = useFetch(
       `/products?populate=*&[filter][categories][id][$eq]=${catId}${selected.map(item => `&[filters][sub_categories][id][$eq]=${item}`)}&[filter][price][$lte]=${maxPrice}`
     );
   
-    console.log('List component received data:', data);
   
     if (error) {
       console.error(`Error fetching data: ${error}`);

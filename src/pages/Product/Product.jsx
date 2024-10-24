@@ -13,7 +13,6 @@ const ProductDetail = () => {
   const { data, error } = useFetch(`/products/${id}?populate=*`);
   
   const product = data;
-    console.log(product)
   if (!product) {
     return <div>Loading...</div>;
   }

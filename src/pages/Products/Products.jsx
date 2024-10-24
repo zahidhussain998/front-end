@@ -30,7 +30,6 @@ function Products() {
 
   const { id } = useParams();
   const catId = parseInt(id);
-  console.log("Parsed catId:", catId);
 
   const { data } = useFetch(
     `/sub-categories?[filters][categories][id][$eq]=${catId}`

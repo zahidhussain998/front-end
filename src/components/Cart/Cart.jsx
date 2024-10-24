@@ -28,7 +28,7 @@ function Cart({isOpen, onClose}) {
     return intially.toFixed(2);
   };
 
-  const stripePromise = loadStripe('pk_test_51QAC6P07G9XG7AOiLGyotQnF7YaLAGa0Re3sRK3mmoIunY7JOBbLFyT0PNuHvAlQiBm6dbO2U4ouDLSG73ejHEUP00p7osUFKM');
+  const stripePromise = loadStripe(import.meta.env.VITE_PUBLIC_STRIPE_PUBLIC_KEY);
 
   const handlePayment = async () => {
     try {
