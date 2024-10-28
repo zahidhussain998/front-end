@@ -67,8 +67,9 @@ your gateway to better well-being
     />
   }
 />
+         
                 <h3 className="text-sm font-semibold text-center mb-2">{product.name || product.title}</h3>
-                <p className="text-gray-600 text-sm">Rs{product.price}</p>
+                <p className="text-gray-600 text-sm">Rs. {product.price}</p>
               </div>
             </div>
           ))}

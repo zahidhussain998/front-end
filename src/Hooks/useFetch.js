@@ -11,9 +11,7 @@ const useFetch = (url) => {
       if (!url) return;  // Don't fetch if url is null or undefined
       try {
         setLoading(true)
-        const res = await makeReq.get(url, {
-          headers: { Authorization: "bearer " + import.meta.env.VITE_API_TOKEN }
-        });
+        const res = await makeReq.get(url);
 
         setData(res.data.data);  // Ensure we always set an array
       } catch (error) {

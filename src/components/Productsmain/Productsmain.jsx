@@ -30,11 +30,14 @@ function Productsmain() {
       </div>
       <div className='mt-9 font-zahid tracking-wide text-center line-clamp-4 font-medium	'>
 
-        <span>Immerse yourself in the allure of organic<br/> bees-soy wax, harmonized with world-class fragrances from around the world tailored<br/> to elevate your atmosphere</span>
+        <span> Transform your space with the elegance of our hand-poured,
+           eco-friendly soy-beeswax 
+            infused with signature scents  <br/> 
+        crafted to elevate every moment. Discover captivating fragrances sourced globally, designed to create a soothing and stylish atmosphere</span>
         </div>
         <div className='text-center mt-9'>
 
-        <Link to="/#">
+        <Link to="/products/1">
         VIEW ALL SCENTED CANDLES
         </Link>
        </div>

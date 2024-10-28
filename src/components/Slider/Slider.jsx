@@ -6,9 +6,9 @@ import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 function Slider() {
   const [current, setCurrent] = useState(0);
   const data = [
-   {image1: "https://hunzacandle.com/cdn/shop/files/Slider_Image_2_68e5857a-43f8-42e3-a42a-2c17424534ba.jpg?v=1719232079&width=2000"},
-    {image1: "https://hunzacandle.com/cdn/shop/files/Slider_Image_CALM_DOWN_1.jpg?v=1726044712&width=2000"},
-    {image1: "https://hunzacandle.com/cdn/shop/files/Slider_Image_11.jpg?v=1719232783&width=2000"}
+   {image1: "1.jpeg"},
+    {image1: "2.jpeg"},
+    {image1: "3.jpeg"}
 ];
 
   const prevSlide = () => {
