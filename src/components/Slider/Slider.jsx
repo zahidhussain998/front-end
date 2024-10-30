@@ -20,7 +20,7 @@ function Slider() {
   };
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden mt-2">
       <div className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] w-full relative">
         <div className="flex w-full h-full">
           {/* Slide container */}
