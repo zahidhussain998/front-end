@@ -16,7 +16,7 @@ function Mood({ type = 'bestselling' }) {
      const [itemsPerPage, setitemsPerPage] = useState(6)
 
 
-     const {data} = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`)
+     const {data, loading, error} = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`)
 
     const products = data;
 
@@ -50,7 +50,7 @@ your gateway to better well-being
             transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
           }}
         >
-          {products.map((product, index) => (
+          {error ? "product's not found" : loading ? "loding..." :  products.map((product, index) => (
             <div
               key={index}
               className={`w-full ${itemsPerPage === 6 ? 'sm:w-1/2 md:w-1/3 lg:w-1/5' : ''} flex-shrink-0 px-2 overflow-hidden`}

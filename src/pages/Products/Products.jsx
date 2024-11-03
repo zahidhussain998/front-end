@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect , memo} from "react";
+import React, { useState, useEffect, memo } from "react";
 import { Slider } from "@/components/ui/slider";
 import List from "../../components/List/List";
 import { ChevronDown, ChevronRight } from "lucide-react";
@@ -12,10 +12,10 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 
 function Products() {
-  const [maxPrice, setMaxPrice] = useState(4500);
+  const [maxPrice, setMaxPrice] = useState(2000);
   const [showicon, setShowicon] = useState(false);
   const [selected, setSelected] = useState([]);
-  const [sort, setSort] = useState(null);
+  const [sort, setSort] = useState('asc');
 
   const handleChange = (e) => {
     const value = Number(e.target.value); // Convert value to a number
@@ -138,41 +138,41 @@ function Products() {
                     className="flex items-center  font-zahid gap-3 tracking-tight hover:tracking-wide"
                   >
                     <input
-                      type="checkbox"
-                      id={item.id}
+                      type="checkbox" name="check" id={item.id}
                       value={item.id}
                       onChange={handleChange}
                     />
-                  
-                      <button  onClick={handleChange}>{item.title || item.name}</button>
+
+
+
+
+                    <button onClick={handleChange}>{item.title || item.name}</button>
                   </li>
                 ))}
                 <div className="space-y-4">
                   <h2 className="font-bold text-lg">PRICE</h2>
-                  <input
-              type="range"
-              min={0}
-              max={4500}
-              onChange={(e) => setMaxPrice(e.target.value)}
-            />
-                  <div className="flex items-center gap-2">
+
+
+
+
+                  <div className="flex gap-2">
                     <input
-                      type="text"
-                      value={`Rs 0`}
-                      className="border p-2 w-24"
+                    
+                      type="checkbox" name="check" id="asc"
+                      value="asc"
                       onChange={(e) => setSort("asc")}
                     />
-                    <span>to</span>
-                    <input
-                      type="text"
-                      value={`Rs ${maxPrice}`}
-                      className="border p-2 w-24"
-                      onChange={(e) => setSort("asc")}
-                    />
+
+                    <label htmlFor="asc">Price (Lowest first)</label>
                   </div>
-                  <button className="bg-black text-white w-full py-2">
-                    APPLY
-                  </button>
+                  <div className="flex gap-2">
+                    <input
+                      type="checkbox" name="check" id="desc"
+                      value="desc"
+                      onChange={(e) => setSort("desc")}
+                    />
+                    <label htmlFor="desc">Price (Highest first)</label>
+                  </div>
                 </div>
               </ul>
             ) : (
@@ -182,7 +182,7 @@ function Products() {
         </div>
 
         <div className="w-full mt-12">
-          <List catId={catId} selected={selected} maxPrice={maxPrice} sort={sort}/>
+          <List catId={catId} selected={selected} maxPrice={maxPrice} sort={sort} />
         </div>
       </div>
     </div>

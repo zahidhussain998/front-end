@@ -8,7 +8,7 @@ function Footer() {
   <div className="mx-auto grid max-w-screen-xl gap-y-8 gap-x-12 px-4 py-10 md:grid-cols-2 xl:grid-cols-4 xl:px-10">
     <div className="max-w-sm">
       <div className="mb-6 flex h-12 items-center space-x-2">
-        <span className="text-2xl font-bold">Bel<span className="text-black">Air</span>.</span>
+        <span className="text-2xl font-bold">D4 designer  <span className="text-black">Aroma Candle</span>.</span>
       </div>
       <div className="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad a officia ea expedita!</div>
     </div>
@@ -44,14 +44,17 @@ function Footer() {
   </div>
   <div className="bg-gray-100">
     <div className="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:flex-row sm:justify-between sm:text-left">
-      <div className="">© 2022 BelAir | All Rights Reserved</div>
+      <div className="">© 2022 Aroma Candle | All Rights Reserved</div>
       <div className="">
         <a className="" href="#">Privacy Policy</a>
         <span>|</span>
         <a className="" href="#">Terms of Service</a>
       </div>
     </div>
+    
   </div>
+  <p className="text-center text-5xl md:text-9xl lg:text-[18rem] font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 dark:from-neutral-950 to-neutral-200 dark:to-neutral-800 inset-x-0">D4 Designer</p>
+
 </footer>
     </div>
   )

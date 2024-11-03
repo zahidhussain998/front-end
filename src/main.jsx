@@ -24,6 +24,8 @@ createRoot(document.getElementById("root")).render(
       <PersistGate loading={"loading..."} persistor={persistor}>
     <Template>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+ 
+
       <App />
     </ClerkProvider>
     </Template>

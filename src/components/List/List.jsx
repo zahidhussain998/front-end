@@ -8,22 +8,22 @@ import useFetch from "../../Hooks/useFetch";
 import TransitionLink from "../TransitionLink";
 
 
-function List({selected, catId, maxPrice}) {
+function List({selected, catId, maxPrice, sort}) {
   const [viewMode, setViewMode] = useState("grid-4");
   const [itemsPerPage, setItemsPerPage] = useState(20);
-  const [sortBy, setSortBy] = useState("best-selling");
+  const [sortBy, setSortBy] = useState("asc");
 
   
     const { data, error, loding } = useFetch(
-      `/products?populate=*&[filter][categories][id][$eq]=${catId}${selected.map(item => `&[filters][sub_categories][id][$eq]=${item}`)}&[filter][price][$lte]=${maxPrice}`
+      `/products?populate=*&[filter][categories][id][$eq]=${catId}${selected.map(item => `&[filters][sub_categories][id][$eq]=${item}`)}&[filter][price][$lte]=${maxPrice}&sort=price:${sort}`
     );
   
   
-    if (error) {
-      console.error(`Error fetching data: ${error}`);
-    } else {
-      console.log(`Data: ${data}`);
-    }
+    // if (error) {
+    //   console.error(`Error fetching data: ${error}`);
+    // } else {
+    //   console.log(`Data: ${data}`);
+    // }
 
   
     // ...
