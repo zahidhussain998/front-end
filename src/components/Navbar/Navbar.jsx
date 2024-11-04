@@ -76,7 +76,7 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar */}
-        <div className="mx-auto px-5 py-3 max-w-7xl w-full top-0 backdrop-blur-md bg-white/30 shadow-sm z-50">
+        <div className="mx-auto px-5 py-3 max-w-7xl w-full top-5 backdrop-blur-md bg-white/30 shadow-sm z-50 rounded-xl">
           <div className="flex justify-between items-center h-16 ">
             {/* Logo */}
             <motion.div
@@ -88,7 +88,7 @@ const Navbar = () => {
             </motion.div>
 
             {/* Desktop Menu */}
-            <nav className="hidden md:flex flex-grow space-x-4 lg:space-x-8 text-gray-700">
+            <nav className="hidden md:flex space-x-4 lg:space-x-8 text-gray-700">
               <TransitionLink
                 to="/"
                 label="SHOP"
