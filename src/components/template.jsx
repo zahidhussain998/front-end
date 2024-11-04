@@ -12,7 +12,7 @@ export default function Template({ children }) {
       {/* Full screen banner that animates */}
       <div
         id="banner-1"
-        className="min-h-[110vh] bg-neutral-950 z-50 fixed w-full h-full flex items-center justify-center"
+        className="min-h-[110vh] bg-white z-50 fixed w-full h-full flex items-center justify-center"
       >
          <img
           src="/new3.png" // Replace with your logo path

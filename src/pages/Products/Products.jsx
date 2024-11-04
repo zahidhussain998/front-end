@@ -11,6 +11,7 @@ import TransitionLink from "../../components/TransitionLink";
 import { Checkbox } from "@/components/ui/checkbox"
 
 
+
 function Products() {
   const [maxPrice, setMaxPrice] = useState(2000);
   const [showicon, setShowicon] = useState(false);
@@ -157,7 +158,7 @@ function Products() {
 
                   <div className="flex gap-2">
                     <input
-                    
+                  
                       type="checkbox" name="check" id="asc"
                       value="asc"
                       onChange={(e) => setSort("asc")}
