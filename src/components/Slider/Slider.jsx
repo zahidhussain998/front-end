@@ -6,7 +6,7 @@ import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 function Slider() {
   const [current, setCurrent] = useState(0);
   const data = [
-   {image1: "0.3jpg"},
+   {image1: "03.jpg"},
     {image1: "01.jpg"},
     {image1: "image.jpg"},
     {image1: "1112.jpg"}
