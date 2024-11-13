@@ -204,12 +204,11 @@ const ProductDetail = () => {
           - Burn candles on a heat-resistant surface, away from drafts, and never leave them unattended.<br />
           - Wipe the glass gently with a damp cloth to remove dust and fingerprints.
         </p>
+        
       </details>
 
       {/* Image Section */}
-      <div className="flex justify-center items-center h-30 w-40 mt-4">
-        <img className="object-cover rounded" src="111.jpg" alt="Disclaimer" />
-      </div>
+     
      
     </div>
     </div>

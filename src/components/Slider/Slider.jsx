@@ -7,8 +7,9 @@ function Slider() {
   const [current, setCurrent] = useState(0);
   const data = [
    {image1: "1.png"},
-    {image1: "D4.png"},
-    {image1: "image.png"}
+    {image1: "01.jpg"},
+    {image1: "image.jpg"},
+    {image1: "1112.jpg"}
 ];
 
   const prevSlide = () => {
