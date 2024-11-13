@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,8 @@ function Cart({isOpen, onClose}) {
   const products = useSelector((state) => state.cart.products);
  
 
-
+  const [quantity, setQuantity] = useState(0)
+  const [subtotal, setSubtotal] = useState(0)
 
   const total = () => {
     let intially = 0;
@@ -28,7 +29,7 @@ function Cart({isOpen, onClose}) {
     return intially.toFixed(2);
   };
 
-  const stripePromise = loadStripe('pk_test_51QAC6P07G9XG7AOiLGyotQnF7YaLAGa0Re3sRK3mmoIunY7JOBbLFyT0PNuHvAlQiBm6dbO2U4ouDLSG73ejHEUP00p7osUFKM');
+  const stripePromise = loadStripe('pk_test_51LlIC4Gn8GCUvWDiVaWGz2c2lw1Ww8zMwF5r0aGzd1r0XLRkqlI5ytvNFrVm1xs0fdvhIhH70nzr4ksxiqyaIFA7004E3jyXKF');
 
   const handlePayment = async () => {
     try {
@@ -49,6 +50,12 @@ function Cart({isOpen, onClose}) {
     }
   };
 
+
+  useEffect(() => {
+    setSubtotal(quantity * products.price)
+
+
+  }, [quantity, products.price])
 
   const slideIn = {
     hidden: { x: "100%" },
@@ -141,8 +148,20 @@ function Cart({isOpen, onClose}) {
                         <div className="mt-1 flex items-center justify-between">
                           <span className="text-sm font-semibold">
                             Rs {product.price}
+                            <div className="font-zahid">
+
+                            {/* <div className="flex items-center border">
+              <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-2 py-1">
+                <Minus size={20} />
+              </button>
+              <span className="px-4">{quantity}</span>
+              <button onClick={() => setQuantity(quantity + 1)} className="px-2 py-1">
+                <Plus size={20} />
+              </button>
+            </div>            */}
+                      Quantity : {product.quantity}
+                             </div>
                           </span>
-                          <span className="text-sm">Qty: {product.quantity}</span>
                         </div>
                       </div>
 
@@ -165,7 +184,7 @@ function Cart({isOpen, onClose}) {
               <div className="border-t p-4 space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="font-semibold">Subtotal:</span>
-                  <span className="font-bold">Rs {total()}</span>
+                  <span className="font-bold">Rs {total()} </span>
                 </div>
                 
                 <motion.div

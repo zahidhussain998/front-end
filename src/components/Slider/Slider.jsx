@@ -6,7 +6,7 @@ import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 function Slider() {
   const [current, setCurrent] = useState(0);
   const data = [
-   {image1: "D41.png"},
+   {image1: "1.png"},
     {image1: "D4.png"},
     {image1: "image.png"}
 ];
@@ -21,7 +21,7 @@ function Slider() {
 
   return (
     <div className="relative overflow-hidden ">
-      <div className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] w-full relative">
+      <div className="h-[500px] sm:h-[500px] md:h-[500px] lg:h-[700px] w-full relative">
         <div className="flex w-full h-full">
           {/* Slide container */}
           {data.map((slide, index) => (
@@ -29,7 +29,7 @@ function Slider() {
               key={index}
               src={slide.image1}
               alt={`Slide ${index + 1}`}
-              className={`w-[100vw] max-h-auto h-40: object-cover absolute transition-opacity duration-700 ease-in-out ${
+              className={`w-[100vw]  object-fit absolute transition-opacity duration-700 ease-in-out ${
                 index === current ? "opacity-100" : "opacity-0"
               }`}
             />

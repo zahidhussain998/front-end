@@ -1,17 +1,24 @@
 // eslint-disable-next-line no-unused-vars
-import React, {  useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Container from '../container/Container';
 import useFetch from '../../Hooks/useFetch';
 import TransitionLink from '../TransitionLink';
+import { fadeIn } from '../utils/variants';
+import ParallaxText from '../utils/ParallaxText';
+import { useDispatch } from 'react-redux';
+import { add } from '@/store/cartReducer';
+import { useParams } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-function CustomProduct({ type = 'bestselling' }) {
+function CustomProduct({ type = 'featured' }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const [itemsPerPage, setItemsPerPage] = useState(1); // default for mobile
+  const [quantity, setQuantity] = useState(0)
   const { data, loding, error } = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`);
+
+
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
@@ -21,39 +28,48 @@ function CustomProduct({ type = 'bestselling' }) {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
   };
 
-  // Animation variants for container
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
+  const dispatch = useDispatch()
+
+  
+
+
+ 
+
+
+
+  const handle = (product) => {
+    dispatch(add({
+      id: product.id,
+      title: product.name || product.title,
+      price: product.price,
+      img: `${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1[0].formats.large.url}`,
+      description: product.description,
+      quantity: quantity > 0 ? quantity : 1,
+    }));
   };
 
-  // Animation variants for each product card
-  const productVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
+
+
+  // Detect screen size and adjust itemsPerPage accordingly
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsPerPage(5); // Show 5 products for larger screens
+      } else {
+        setItemsPerPage(1); // Show 1 product for smaller screens
       }
-    }
-  };
+    };
+
+    handleResize(); // Set initial items per page based on window size
+    window.addEventListener('resize', handleResize); // Listen for window resize events
+
+    return () => window.removeEventListener('resize', handleResize); // Cleanup listener on component unmount
+  }, []);
+
 
   return (
     <Container>
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={containerVariants}
-        className="container mx-auto px-4 py-14"
-      >
+      <div className="container mx-auto px-4 py-14 overflow-hidden">
         <Container>
           <article className="grid grid-cols-[1fr_auto_1fr] place-items-center mb-5">
             <span className="border-y w-full border-gray-300 mr-12"></span>
@@ -64,23 +80,37 @@ function CustomProduct({ type = 'bestselling' }) {
           </article>
         </Container>
 
-        <div className="relative">
-          <div className="flex overflow-x-hidden">
+        <motion.div
+          variants={fadeIn('right', 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.2 }}
+          className="relative">
+
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(-${(currentIndex * 100) / itemsPerPage}%)`
+            }}
+          >
+
+
+
+
             {error ? (
               "something went wrong"
             ) : loding ? (
               "LOADING..."
             ) : (
               data.map((product, index) => (
-                <motion.div
-                  key={index}
-                  variants={productVariants}
-                  className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 flex-shrink-0 px-2 transition-transform duration-300 ease-in-out"
-                  style={{
-                    transform: `translateX(-${currentIndex * 100}%)`,
-                  }}
+                // eslint-disable-next-line react/jsx-key
+                <div key={index} className={`w-full ${itemsPerPage === 5 ? 'sm:w-1/2 md:w-1/3 lg:w-1/5' : ''} flex-shrink-0 px-2 overflow-hidden`}
                 >
-                  <div className="flex flex-col items-center">
+                  <div className="flex flex-col items-center"
+
+                  >
+
+
                     <TransitionLink
                       key={product.documentId}
                       to={`/product/${product.documentId}`}
@@ -91,24 +121,37 @@ function CustomProduct({ type = 'bestselling' }) {
                             whileTap={{ scale: 0.9 }}
                             className="p-2"
                           >
+
                             <img
                               loading="lazy"
                               src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1[0].formats.large.url}`}
                               alt={product.title}
-                              className="w-full aspect-[3/4] object-cover mb-6"
+                              className="w-full aspect-[3/4] object-cover mb-3 hover:underline"
                             />
+
+
                           </motion.div>
                         </div>
                       }
                     />
-                    <h3 className="text-sm font-semibold text-center mb-2">
+                    <h3 className="text-sm font-semibold text-center mb-2 font-zahid">
                       {product.title}
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-gray-600 text-sm font-zahid">
                       Rs. {product.price.toFixed(2)}
                     </p>
+
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="hover:bg-zinc-900 dark:hover:bg-neutral-800 bg-black text-white py-3 px-20 mt-3  relative">
+
+                      <button className=''
+
+                        onClick={() => handle(product)}>Add To Cart</button>
+                    </motion.div>
                   </div>
-                </motion.div>
+                </div>
               ))
             )}
           </div>
@@ -124,8 +167,14 @@ function CustomProduct({ type = 'bestselling' }) {
           >
             <ChevronRight size={24} />
           </button>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
+      <>
+        {/* <section>
+      <ParallaxText baseVelocity={-5}>Framer Motion</ParallaxText>
+      <ParallaxText baseVelocity={5}>Scroll velocity</ParallaxText>
+    </section> */}
+      </>
     </Container>
   );
 }

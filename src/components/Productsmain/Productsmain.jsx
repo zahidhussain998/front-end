@@ -9,19 +9,30 @@ import {
   } from "@/components/ui/carousel"
   import Container from '../container/Container'
 import { Link } from 'react-router-dom'
+import {motion} from 'framer-motion'
+import { fadeIn } from '../utils/variants'
 function Productsmain() {
 
 
     const data = [
-     { image1: 'https://hunzacandle.com/cdn/shop/files/Home_Scented_Candle_sizes_420x.jpg?v=1719667336'}
+     { image1: 'aroma.jpg'},
+     { image1: 'KK.jpg'}
     ]
 
     
   return (
-    <Container>
 
-    <div className='flex-col md:flex-row sm:flex-col px-10 py-10 flex justify-around items-center gap-10'>
-        <div>
+    <div className='w-full max-w-7xl mx-auto px-4'>
+
+    <div
+
+    className='flex-col md:flex-row sm:flex-col px-10 py-10 flex justify-around items-center gap-10 font-zahid'>
+        <motion.div
+                 variants={fadeIn('right', 0.2)}
+                 initial="hidden"
+                 whileInView={"show"}
+                 viewport={{ once: false, amount : 0.2 }}
+        >
 
       <div className='flex justify-center items-center mb-6 md:mb-0 text-center	'>
         <h2 className=' font-zahid text-3xl font-bold hover:subpixel-antialiased'>
@@ -41,7 +52,7 @@ function Productsmain() {
         VIEW ALL SCENTED CANDLES
         </Link>
        </div>
-        </div>
+        </motion.div>
       
       <Carousel
         opts={{
@@ -50,9 +61,14 @@ function Productsmain() {
         className="w-full max-w-4xl" // Increased max-width
       >
         <CarouselContent>
-          {Array.from({ length: 10 }).map((_, index) => (
+          {data.map((_, index) => (
             <CarouselItem key={index} className="md:basis-full lg:basis-full overflow-hidden">
-              <div className="p-1">
+              <motion.div
+                       variants={fadeIn('left', 0.2)}
+                       initial="hidden"
+                       whileInView={"show"}
+                       viewport={{ once: false, amount : 0.2 }}
+              className="p-1">
                                 <Link to={`/products/1`}>
                                     <img 
                                         className='w-full h-[400px] object-cover'
@@ -60,7 +76,7 @@ function Productsmain() {
                                         alt={`Product ${index + 1}`}
                                     />
                                 </Link>
-              </div>
+              </motion.div>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -68,7 +84,8 @@ function Productsmain() {
         <CarouselNext />
       </Carousel>
     </div>
-    </Container>
+    </div>
+
 
   )
 }

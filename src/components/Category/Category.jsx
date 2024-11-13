@@ -5,10 +5,11 @@ import Container from '../container/Container';
 import useFetch from '../../Hooks/useFetch'
 import TransitionLink from '../TransitionLink';
 import {motion} from 'framer-motion'
+import { fadeIn } from '../utils/variants';
 
 
 // eslint-disable-next-line react/prop-types
-function CustomProductCarousel({ type = "featured" }) {
+function CustomProductCarousel({ type = "Category" }) {
 
 
 
@@ -28,15 +29,23 @@ function CustomProductCarousel({ type = "featured" }) {
 
   return (
 
-    <Container>
 
-      <div className="container mx-auto px-4 py-14">
+    <div className='w-full max-w-7xl mx-auto px-4'>
+
+      <div
+      
+      className="container mx-auto px-4 py-14">
         <article className="grid grid-cols-[1fr_auto_1fr] gap-4 place-items-center mb-5">
           <span className="border-y w-full border-black mr-10"></span>
           <h1 className="text-2xl w-fit font-zahid font-bold">SHOP BY CATEGORY</h1>
           <span className="border-y w-full border-black ml-10"></span>
         </article>
-        <div className="relative">
+        <motion.div 
+                       variants={fadeIn('right', 0.2)}
+                       initial="hidden"
+                       whileInView={"show"}
+                       viewport={{ once: false, amount : 0.2 }}
+        className="relative">
           <div className="flex overflow-x-hidden">
             {error ? "something went wrong" : loding ? "LODING..." : product.map((product, index) => (
               <div
@@ -60,18 +69,24 @@ function CustomProductCarousel({ type = "featured" }) {
 
 
                           <img
-                            src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1[0].formats.large.url}`}
+src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1?.[0]?.formats?.large?.url || '/path/to/placeholder.jpg'}`}
+alt={product.title}
+                            className="w-full aspect-[3/4] object-cover mb-2 hover:"
+                          />
+
+
+{/* <img
+                            src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image.formats.large.url}`}
                             alt={product.title}
                             className="w-full aspect-[3/4] object-cover mb-6"
-                          />
+                          /> */}
                         </motion.div>
 
 
                       </div>
                     }
                   />
-                  <h3 className="text-sm font-semibold text-center mb-2">{product.name || product.title}</h3>
-                  <p className="text-gray-600 text-sm">{product.price}</p>
+                  <h3 className="text-sm font-semibold text-center mb-2 font-zahid">{product.name || product.title}</h3>
                 </div>
               </div>
             ))}
@@ -88,12 +103,13 @@ function CustomProductCarousel({ type = "featured" }) {
           >
             <ChevronRight size={24} />
           </button>
-        </div>
+        </motion.div>
         <div className="flex justify-center mt-4">
 
         </div>
       </div>
-    </Container>
+    </div>
+
 
   )
 }

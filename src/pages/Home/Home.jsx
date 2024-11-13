@@ -27,7 +27,7 @@ function Home() {
       
       <div>
         <CenteredSuspense>
-          <FeaturedProduct type='bestselling' />
+          <FeaturedProduct />
         </CenteredSuspense>
       </div>
 

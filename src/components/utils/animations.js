@@ -9,7 +9,7 @@ export const animatePageIn = () => {
     const tl = gsap.timeline();
     tl.set(bannerOne, { yPercent: -100 })
       .to(bannerOne, { yPercent: 0, duration: 1, ease: "power1.out" }) // Slide in
-      .to(bannerOne, { yPercent: 100, duration: 0, ease: "power1.out" }, "+=2"); // Pause for 3 seconds then slide out
+      .to(bannerOne, { yPercent: 100, duration: 2, ease: "power1.out", delay:2 },); // Pause for 3 seconds then slide out
   }
 };
 
@@ -21,7 +21,7 @@ export const animatePageOut = (href, router) => {
     const tl = gsap.timeline();
     tl.set(bannerOne, { yPercent: 100 }) // Ensure it starts in view
       .to(bannerOne, { yPercent: 0, duration: 1, ease: "power1.out" }) // Slide in
-      .to(bannerOne, { yPercent: -100, duration: 2, ease: "power2.in", delay: 2, onComplete: () => {
+      .to(bannerOne, { yPercent: -100, duration: 1, ease: "power2.in", delay:1, onComplete: () => {
         router(href); // Navigate after the animation
       } }); // Pause for 3 seconds before translating out
   }
