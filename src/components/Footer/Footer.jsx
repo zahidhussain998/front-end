@@ -16,60 +16,80 @@ function Footer() {
             <div className="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad a officia ea expedita!</div>
           </div>
 
-          <div className="mt-4 mb-2 font-medium">
-            <div className="mt-4 mb-2 font-medium xl:mb-4 text-white">Categories</div>
+          <div className="">
+            <div className="mt-4 mb-2 font-medium xl:mb-4 text-white">CATEGORY</div>
+            <nav aria-label="Footer Navigation" className="text-gray-500">
             <div className="text-gray-500 space-y-5">
               <Link
                 to="/products/1"
-                className="text-white hover:text-gray-300 transition duration-200 ease-in-out space-y-3"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out space-y-3"
               >
-                Shop
-
-              </Link>
+Lavender Home Candle              </Link>
               <br />
               <Link
                 to="/products/1"
-                className="text-white hover:text-gray-300 transition duration-200 ease-in-out"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out"
               >
-                candle
-
-              </Link>
+Stress Therapy Home Candle            </Link>
               <br />
               <Link
                 to="/products/1"
-                className="text-white hover:text-gray-300 transition duration-200 ease-in-out"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out"
               >
-                CANDLES
-
-              </Link>
+Bakhoor Home Candle              </Link>
               <br />
               <Link
                 to="/products/1"
-                className="text-white hover:text-gray-300 transition duration-200 ease-in-out"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out"
               >
-                Shop
-
-              </Link>
+jasmine Home Candle          </Link>
               <br />
               <Link
                 to="/products/1"
-                className="text-white hover:text-gray-300 transition duration-200 ease-in-out"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out"
               >
-                Shop
-
+Stress Therapy Deluxe Candle
               </Link>
             </div>
+            </nav>
           </div>
           <div className="">
-            <div className="mt-4 mb-2 font-medium xl:mb-4 text-white">Links</div>
+            <div className="mt-4 mb-2 font-medium xl:mb-4 text-white">SUBCATEGORY</div>
             <nav aria-label="Footer Navigation" className="text-gray-500">
-              <ul className="space-y-3">
-                <li><a className="hover:text-white hover:underline" href="#">Pricing</a></li>
-                <li><a className="hover:text-white hover:underline" href="#">Demo</a></li>
-                <li><a className="hover:text-white hover:underline" href="#">Press</a></li>
-                <li><a className="hover:text-white hover:underline" href="#">Support Hub</a></li>
-                <li><a className="hover:text-white hover:underline" href="#">Contact</a></li>
-              </ul>
+            <div className="text-gray-500 space-y-5">
+              <Link
+                to="/products/1"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out space-y-3"
+              >
+Deluxe Candles
+              </Link>
+              <br />
+              <Link
+                to="/products/1"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out"
+              >
+Aroma Candle              </Link>
+              <br />
+              <Link
+                to="/products/1"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out"
+              >
+Bloomy Mulberries Deluxe Candle
+              </Link>
+              <br />
+              <Link
+                to="/products/1"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out"
+              >
+Rain Deluxe Candle              </Link>
+              <br />
+              <Link
+                to="/products/1"
+                className="text-white hover:text-white hover:underline transition duration-200 ease-in-out"
+              >
+Stress Therapy Deluxe Candle
+              </Link>
+            </div>
             </nav>
           </div>
           <div className="">
