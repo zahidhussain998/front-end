@@ -164,7 +164,7 @@ const Navbar = ({onClose,}) => {
 
             <motion.div
               whileHover={{ scale: 1.1 }}
-              className="space-x-5 bg-slate-900 rounded-full p-3 m-3 text-white"
+              className="space-x-5 bg-slate-900 rounded-full lg:px-2 lg:py-2 px-1 py-1 text-white"
             >
               <SignedOut>
                 <SignInButton />

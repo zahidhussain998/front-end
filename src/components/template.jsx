@@ -17,9 +17,10 @@ export default function Template({ children }) {
          <img
           src="/IMG.jpg" // Replace with your logo path
           alt="Logo"
-          className="max-w-[1200px] max-h-[748px] object-contain" // Adjust the size as needed
+          className="lg:w-[1200px] md:h-[748px] sm:w-96 sm:h-96 flex items-center justify-center object-contain" // Adjust the size as needed
         />
         </div>
+
       
       {/* Page content */}
       <div className="relative z-20">
