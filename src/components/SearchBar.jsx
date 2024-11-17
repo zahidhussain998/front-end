@@ -31,7 +31,7 @@ const SearchBar = () => {
   return (
     <div>
       {/* Search Icon Button */}
-      <button onClick={toggleSearch} className="p-2 hover:bg-gray-100 rounded-sm">
+      <button onClick={toggleSearch} className="p-2 rounded-sm">
       <Search />
 
       </button>

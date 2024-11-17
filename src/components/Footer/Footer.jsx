@@ -3,6 +3,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ParallaxText } from '../utils/ParallaxText'
+import { SocialIcon } from 'react-social-icons'
+
 
 function Footer() {
   return (
@@ -102,19 +104,28 @@ Stress Therapy Deluxe Candle
             </div>
           </div>
         </div>
+        <hr className="h-px my-8 bg-white border-0 dark:bg-white"/>
         <div className="bg-black">
           <div className="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:flex-row sm:justify-between sm:text-left">
-            <div className="">© 2022 Aroma Candle | All Rights Reserved</div>
-            <div className="">
+            <div className="flex text-white">
+              
+              © 2022 Aroma Candle
+              
+            <div className="ml-3">
               <a className="" href="#">Privacy Policy</a>
               <span>|</span>
               <a className="" href="#">Terms of Service</a>
 
-              <div className='flex justify-center items-center h-30 w-40'>
-                <img className='w-full h-full object-contain' src="pay.jpg" alt="image" />
-              </div>
 
             </div>
+               </div>
+
+               <div className='space-x-3'>
+                <SocialIcon url='https://youtube.com/@d4designersaromacandle?si=CqcjiaRnu2dQJHH1'style={{ height: 40, width: 40 }} bgColor='black' fgColor='white'/>
+                <SocialIcon url=' https://www.facebook.com/share/17rtjg9ULq/?mibextid=LQQJ4d' style={{ height: 40, width: 40 }} bgColor='black' fgColor='white'/>
+                <SocialIcon url='https://www.instagram.com/designers_aromacandle?igsh=aWx2a2ExanpsMndj&utm_source=qr' style={{ height: 40, width: 40 }}  bgColor='black' fgColor='white'/>
+                <SocialIcon url='https://www.tiktok.com/@aroma_candle2024?_t=8rT5HYrfhqx&_r=1' style={{ height: 40, width: 40 }}  bgColor='black' fgColor='white'/>
+               </div>
           </div>
 
         </div>

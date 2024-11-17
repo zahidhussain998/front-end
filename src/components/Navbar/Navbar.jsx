@@ -147,12 +147,14 @@ const Navbar = ({onClose,}) => {
 
           {/* Right Icons */}
           <div className="flex items-center gap-4">
+           
+
             <SearchBar className="" />
 
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-full relative"
+              className="p-2 dark:hover:bg-neutral-800 rounded-full relative"
               onClick={() => setIsCartOpen(!isCartOpen)}
             >
 <ShoppingBag />
@@ -164,7 +166,7 @@ const Navbar = ({onClose,}) => {
 
             <motion.div
               whileHover={{ scale: 1.1 }}
-              className="space-x-5 bg-slate-900 rounded-full lg:px-2 lg:py-2 px-1 py-1 text-white hidden lg:block p-2 "
+              className="space-x-5 border-2 border-black hover:bg-slate-950 hover:text-white rounded-full py-1 px-3 text-black hidden lg:block p-2 font-zahid"
             >
               <SignedOut>
                 <SignInButton />

@@ -110,7 +110,7 @@ function Products() {
                 <h2 className="font-bold text-lg">PRICE</h2>
                 <input
                   type="range"
-                  min="0"
+                  min="100"
                   max="4500"
                   step="50"
                   value={maxPrice}
