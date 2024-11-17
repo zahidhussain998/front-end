@@ -74,6 +74,7 @@ function CustomProductCarouse({type = "bestsellers"}) {
         <h1 className="text-2xl w-fit font-zahid font-bold">BEST SELLERS</h1>
         <span className="border-y w-full border-black"></span>
       </article>
+      
       <motion.div
         variants={fadeIn('right', 0.2)}
         initial="hidden"
@@ -128,9 +129,8 @@ function CustomProductCarouse({type = "bestsellers"}) {
                       </p>
   
                       <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="hover:bg-zinc-900 dark:hover:bg-neutral-800 bg-black text-white py-3 px-16 mt-3  relative">
+                        
+                        className="dark:hover:bg-neutral-800 bg-black text-white py-3 px-16 mt-3 hover:bg-white hover:text-black  relative">
   
                         <button className=''
                        onClick={() => handlePay(product)}
