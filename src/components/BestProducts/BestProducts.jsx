@@ -129,13 +129,18 @@ function CustomProductCarouse({type = "bestsellers"}) {
                       </p>
   
                       <motion.div
-                        
-                        className="dark:hover:bg-neutral-800 bg-black text-white py-3 px-16 mt-3 hover:bg-white hover:text-black  relative">
-  
-                        <button className=''
-                       onClick={() => handlePay(product)}
-                         >Add To Cart</button>
-                      </motion.div>
+  className="bg-black text-white py-3 px-16 mt-3 border border-black 
+             hover:bg-white hover:text-black hover:border-black 
+             transition duration-300"
+>
+  <button
+    className=""
+    onClick={() => handlePay(product)}
+  >
+    Add To Cart
+  </button>
+</motion.div>
+
                   <h3 className="text-sm font-semibold text-center mb-2 font-zahid">{product.name}</h3>
                 </div>
               </div>
