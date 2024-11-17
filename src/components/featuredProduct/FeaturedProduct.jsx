@@ -142,10 +142,10 @@ function CustomProduct({ type = 'featured' }) {
                     </p>
 
                     <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="hover:bg-zinc-900 dark:hover:bg-neutral-800 bg-black text-white py-3 px-16 mt-3  relative">
-
+                      
+                      className="bg-black text-white py-3 px-16 mt-3 border border-black 
+                      hover:bg-white hover:text-black hover:border-black 
+                      transition duration-300">
                       <button className=''
 
                         onClick={() => handle(product)}>Add To Cart</button>
