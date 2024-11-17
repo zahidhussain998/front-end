@@ -163,7 +163,9 @@ function Products() {
                       id={item.id}
                       value={item.id}
                       onChange={handleChange}
+                      className="w-5 h-5 accent-black cursor-pointer"
                     />
+                      <span className="w-5 h-5 border-2 border-black rounded-sm peer-checked:bg-black peer-checked:before:content-['✓'] peer-checked:before:text-white peer-checked:before:flex peer-checked:before:justify-center peer-checked:before:items-center" />
                     <button onClick={handleChange}>{item.title || item.name}</button>
                   </li>
                 ))}
@@ -195,8 +197,11 @@ function Products() {
                     step="50"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(Number(e.target.value))}
-                    className="w-full"
-                  />
+                    className="w-full appearance-none h-2 bg-black rounded-lg cursor-pointer accent-black"
+                    style={{
+                      // Additional custom styles for browsers not fully supported by Tailwind
+                      accentColor: 'black',
+                    }}                  />
                   <span>Selected Range: Rs {minPrice} - Rs {maxPrice}</span>
                   <button
                     className="bg-black text-white w-full py-2 mt-4"
