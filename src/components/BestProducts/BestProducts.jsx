@@ -130,7 +130,7 @@ function CustomProductCarouse({type = "bestsellers"}) {
                       <motion.div
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="hover:bg-zinc-900 dark:hover:bg-neutral-800 bg-black text-white py-3 px-20 mt-3  relative">
+                        className="hover:bg-zinc-900 dark:hover:bg-neutral-800 bg-black text-white py-3 px-16 mt-3  relative">
   
                         <button className=''
                        onClick={() => handlePay(product)}
