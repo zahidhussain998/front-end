@@ -62,12 +62,9 @@ function CustomProductCarouse({type = "bestsellers"}) {
   };
 
   return (
-    <motion.div
+    <div
      
-    variants={fadeIn('right', 0.2)}
-    initial="hidden"
-    whileInView={"show"}
-    viewport={{ once: false, amount : 0.2 }}
+    
     className="container mx-auto px-4 py-14 overflow-hidden">
       <article className="grid grid-cols-[1fr_auto_1fr] place-items-center mb-5">
         <span className="border-y w-full border-black"></span>
@@ -162,7 +159,7 @@ function CustomProductCarouse({type = "bestsellers"}) {
           <ChevronRight size={24} />
         </button>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 
