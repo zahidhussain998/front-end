@@ -165,7 +165,6 @@ function Products() {
                       onChange={handleChange}
                       className="w-5 h-5 accent-black cursor-pointer"
                     />
-                      <span className="w-5 h-5 border-2 border-black rounded-sm peer-checked:bg-black peer-checked:before:content-['✓'] peer-checked:before:text-white peer-checked:before:flex peer-checked:before:justify-center peer-checked:before:items-center" />
                     <button onClick={handleChange}>{item.title || item.name}</button>
                   </li>
                 ))}
