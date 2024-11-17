@@ -122,7 +122,7 @@ function List({ selected, catId, maxPrice, sort, minPrice }) {
             />
           }
         />
-        <Link to={`/product/${item.id}`} className="font-semibold font-zahid">
+        <Link to={`/product/${item.id}`} className="font-semibold font-zahid text-nowrap">
           {item.title || item.name}
         </Link>
         <p>{item.description}</p>
