@@ -5,10 +5,10 @@ import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 function Slider() {
   const [current, setCurrent] = useState(0);
   const data = [
+    { image1: "Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_3-transformed.jpeg" },
     { image1: "t1.jpeg" },
     {image1: "Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_1-transformed.jpeg"},
     { image1: "Leonardo_Phoenix_I_want_to_create_a_banner_the_only_4_candles_1-transformed.jpeg" },
-    { image1: "Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_3-transformed.jpeg" },
   ];
 
   const prevSlide = () => {
