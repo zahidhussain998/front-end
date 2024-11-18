@@ -143,10 +143,10 @@ function CustomProduct({ type = 'featured' }) {
 
                     <motion.div
                       
-                      className="bg-black text-white py-3 px-16 mt-3 border border-black 
-                      hover:bg-white hover:text-black hover:border-black 
-                      transition duration-300">
-                      <button className=''
+                      className="bg-black text-white py-3 px-8 sm:px-10 md:px-12 lg:px-16 mt-3 border border-black 
+         hover:bg-white hover:text-black hover:border-black 
+         transition duration-300 text-center">
+                      <button className='whitespace-nowrap'
 
                         onClick={() => handle(product)}>Add To Cart</button>
                     </motion.div>
