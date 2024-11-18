@@ -15,7 +15,7 @@ function Footer() {
             <div className="mb-6 flex h-12 items-center space-x-2">
               <span className="text-2xl font-bold text-white">D4 designer  <span className="text-white">Aroma Candle</span>.</span>
             </div>
-            <div className="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad a officia ea expedita!</div>
+            <div className="text-white">illuminate your world with D4 Designer Aroma Candle Where Luxury Meets Comfort</div>
           </div>
 
           <div className="">
