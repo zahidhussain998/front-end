@@ -6,6 +6,7 @@ import Home from './pages/Home/Home.jsx';
 import Products from './pages/Products/Products.jsx';
 import Product from './pages/Product/Product.jsx';
 import {RouterProvider } from "react-router-dom";
+import Slider from './components/Slider/Slider';
 
 
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         path: "/product/:id",
         element: <Product />,
       },
+      {
+        path: "product/1",
+        element: <Slider/>,
+      }
     ],
   },
 ]);

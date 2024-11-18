@@ -52,7 +52,7 @@ const DropdownMenu = ({ label, items }) => {
               <Link
                 key={item.label}
                 to={item.path}
-                className="block p-2 hover:bg-gray-100 font-zahid "
+                className="block p-2 hover:bg-gray-100 font-zahid font-extrabold "
               >
                 {item.label}
               </Link>
@@ -138,10 +138,17 @@ const Navbar = ({onClose,}) => {
                 { label: "SCENDED", path: "/products/1" },
               ]}
             />
-            <TransitionLink
-              to="/products/1"
+            <DropdownMenu
               label="FRAGRANCES"
               className="px-4 py-2 text-gray-700 hover:text-gray-900 font-zahid text-sm lg:text-base"
+              items={[
+                { label: "Lavender Home Candle", path: "/products/1" },
+                { label: "Stress Therapy Home Candle", path: "/products/1" },
+                { label: "Bakhoor Home Candle", path: "/products/1" },
+                { label: "jasmine Home Candle", path: "/products/1" },
+                { label: "Stress Therapy Deluxe Candle", path: "/products/1" },
+                
+              ]}
             />
           </nav>
 

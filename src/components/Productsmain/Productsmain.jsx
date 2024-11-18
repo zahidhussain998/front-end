@@ -15,8 +15,8 @@ function Productsmain() {
 
 
     const data = [
-     { image1: 'aroma.jpg'},
-     { image1: 'KK.jpg'}
+     { image1: 'Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_0.jpg'},
+     { image1: 'Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_1 (2).jpg'}
     ]
 
     

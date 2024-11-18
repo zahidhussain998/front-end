@@ -36,9 +36,9 @@ function CustomProductCarousel({ type = "Category" }) {
       
       className="container mx-auto px-4 py-14">
         <article className="grid grid-cols-[1fr_auto_1fr] gap-4 place-items-center mb-5">
-          <span className="border-y w-full border-black mr-10"></span>
+          <span className="border-y w-full border-black "></span>
           <h1 className="text-2xl w-fit font-zahid font-bold">SHOP BY CATEGORY</h1>
-          <span className="border-y w-full border-black ml-10"></span>
+          <span className="border-y w-full border-black"></span>
         </article>
         <motion.div 
                        variants={fadeIn('right', 0.2)}

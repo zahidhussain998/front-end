@@ -44,7 +44,7 @@ const SearchBar = () => {
             initial={{ opacity: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-white z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-white z-50 flex items-center justify-center p-4 border-y w-full border-black "
           >
             <div className="relative w-full max-w-[100rem]">
               <div className="flex items-center gap-4">

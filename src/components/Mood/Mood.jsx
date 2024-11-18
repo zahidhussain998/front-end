@@ -28,9 +28,9 @@ function Mood({ type = 'Models' }) {
     className='mx-auto px-10 py-10'>
     <div className="container mx-auto px-4 py-14">
     <article className="grid grid-cols-[1fr_auto_1fr] place-items-center mb-5">
-       <span className="border-y w-full border-black mr-10"></span>
-       <h1 className="text-2xl w-fit font-zahid font-semibold">MOOD & WELLNESS SERIES</h1>
-       <span className="border-y w-full border-black ml-10"></span>
+       <span className="border-y w-full border-black "></span>
+       <h1 className="text-2xl w-fit font-zahid font-semibold sm:tex">MOOD & WELLNESS SERIES</h1>
+       <span className="border-y w-full border-black "></span>
 
      </article>
      <div className='flex justify-center items-center'>

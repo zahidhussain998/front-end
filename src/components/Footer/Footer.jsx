@@ -8,7 +8,7 @@ import { SocialIcon } from 'react-social-icons'
 
 function Footer() {
   return (
-    <div>
+    <div className='mt-80'>
       <footer className="bg-black">
         <div className="mx-auto grid max-w-screen-xl gap-y-8 gap-x-12 px-4 py-10 md:grid-cols-2 xl:grid-cols-4 xl:px-10">
           <div className="max-w-sm">
