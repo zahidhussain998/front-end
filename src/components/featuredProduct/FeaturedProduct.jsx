@@ -9,16 +9,16 @@ import { fadeIn } from '../utils/variants';
 import ParallaxText from '../utils/ParallaxText';
 import { useDispatch } from 'react-redux';
 import { add } from '@/store/cartReducer';
-import { useParams } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 function CustomProduct({ type = 'featured' }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(1); // default for mobile
   const [quantity, setQuantity] = useState(0)
+  const [hover, setHover] = useState(false)
   const { data, loding, error } = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`);
 
-
+  console.log(data)
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
@@ -120,14 +120,22 @@ function CustomProduct({ type = 'featured' }) {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             className="p-2"
+                            onMouseOver={() => setHover(true)}
+                            onMouseLeave={() => setHover(false)}
                           >
 
                             <img
                               loading="lazy"
                               src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1[0].formats.large.url}`}
                               alt={product.title}
-                              className="w-full aspect-[3/4] object-cover mb-3 hover:underline"
+                              className={`w-full aspect-[3/4] object-cover mb-3 hover:underline` }
                             />
+                             {/* <img
+                            src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image.formats.large.url}`}
+                            alt={product.title}
+                            className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 ${
+                              hover ? 'opacity-100' : 'opacity-0'
+                            }`}                          /> */}
 
 
                           </motion.div>
@@ -145,8 +153,8 @@ function CustomProduct({ type = 'featured' }) {
                       
                       className="bg-black text-white py-3 px-8 sm:px-10 md:px-12 lg:px-10 mt-3 border border-black 
          hover:bg-white hover:text-black hover:border-black 
-         transition duration-300 text-center">
-                      <button className='whitespace-nowrap'
+         transition duration-300 text-center flex-grow ">
+                      <button className='whitespace-nowrap flex-grow'
 
                         onClick={() => handle(product)}>Add To Cart</button>
                     </motion.div>

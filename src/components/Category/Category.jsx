@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Container from '../container/Container';
 import useFetch from '../../Hooks/useFetch'
 import TransitionLink from '../TransitionLink';
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import { fadeIn } from '../utils/variants';
 
 
@@ -14,6 +14,7 @@ function CustomProductCarousel({ type = "Category" }) {
 
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hover, setHover] = useState(false)
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
@@ -33,19 +34,19 @@ function CustomProductCarousel({ type = "Category" }) {
     <div className='w-full max-w-7xl mx-auto px-4'>
 
       <div
-      
-      className="container mx-auto px-4 py-14">
+
+        className="container mx-auto px-4 py-14">
         <article className="grid grid-cols-[1fr_auto_1fr] gap-4 place-items-center mb-5">
           <span className="border-y w-full border-black "></span>
           <h1 className="text-2xl w-fit font-zahid font-bold">SHOP BY CATEGORY</h1>
           <span className="border-y w-full border-black"></span>
         </article>
-        <motion.div 
-                       variants={fadeIn('right', 0.2)}
-                       initial="hidden"
-                       whileInView={"show"}
-                       viewport={{ once: false, amount : 0.2 }}
-        className="relative">
+        <motion.div
+          variants={fadeIn('right', 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.2 }}
+          className="relative">
           <div className="flex overflow-x-hidden">
             {error ? "something went wrong" : loding ? "LODING..." : product.map((product, index) => (
               <div
@@ -63,23 +64,29 @@ function CustomProductCarousel({ type = "Category" }) {
                     label={
                       <div>
                         <motion.div
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="p-2">
+                          // whileHover={{ scale: 1.1 }}
+                          // whileTap={{ scale: 0.9 }}
+                          // className="p-2"
+                          onMouseOver={() => setHover(true)}
+                          onMouseLeave={() => setHover(false)}
+                          >
 
 
                           <img
-src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1?.[0]?.formats?.large?.url || '/path/to/placeholder.jpg'}`}
-alt={product.title}
-                            className="w-full aspect-[3/4] object-cover mb-2 hover:"
+                            src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1?.[0]?.formats?.large?.url || '/path/to/placeholder.jpg'}`}
+                            alt={product.title}
+                            className={`w-full aspect-[3/4] object-cover mb-3 hover:underline ${
+                              hover ? 'opacity-0' : 'opacity-100'
+                            }` }
                           />
 
 
-{/* <img
+                          <img
                             src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image.formats.large.url}`}
                             alt={product.title}
-                            className="w-full aspect-[3/4] object-cover mb-6"
-                          /> */}
+                            className={`absolute top-0 left-0 w-full aspect-[3/4] object-cover transition-opacity duration-300 ${
+                              hover ? 'opacity-100' : 'opacity-0'}`}
+                          />
                         </motion.div>
 
 

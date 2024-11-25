@@ -9,17 +9,31 @@ import { add } from '@/store/cartReducer';
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [subtotal, setSubtotal] = useState(0)
-  const { id } = useParams();
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null); // To track the selected color
+
+    const { id } = useParams();
 
   const { data, error } = useFetch(`/products/${id}?populate=*`);
 
 
+  const handleSizeSelect = (size) => {
+    setSelectedSize(size);
+  };
 
+
+  const handleColorSelect = (color) => {
+    setSelectedColor(color);
+  };
+
+  
+  
   const product = data;
   if (!product) {
     return <div>Loading...</div>;
   }
-
+  
+  const colars = product.colars || []; // Fetch the colors array
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
@@ -31,9 +45,15 @@ const ProductDetail = () => {
   }
 
   const imageUrl = product.image1 && product.image1[0]?.formats?.medium?.url
-    ? `${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1[0].formats.medium.url}`
+    ? `${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1[0].formats.large.url}`
     : null;
 
+
+
+    const sizes = Array.isArray(product.sizes)
+    ? product.sizes.map(size => size.title || size.name) // Adjust based on your data
+    : Object.values(product.sizes || {}).map(size => size.title || size.name);
+    
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const disptch = useDispatch()
@@ -43,16 +63,19 @@ const ProductDetail = () => {
     disptch(add({
       id: product.id,
       title: product.title || product.name,
-      description: product.discription, // Note: 'description' is misspelled in your API response
+      description: product.description,
       img: imageUrl,
       price: product.price,
       quantity,
+      size: selectedSize, // Include selected size
+      color: selectedColor, // Include selected color
     }));
   };
 
+
   return (
     <div className="container mx-auto px-4 py-8 ">
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row  gap-8">
         {/* Left side - Images */}
         <div className="md:w-1/2 sm:w-1/1">
           {imageUrl && (
@@ -62,41 +85,98 @@ const ProductDetail = () => {
               className="cursor-crosshair w-[95rem]  object-cover mb-6"
             />
           )}
+             
+
+             <div>
+            
+                
+             </div>
+          <div className=''>
+            <img
+              src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image?.formats?.medium?.url}`}
+              alt={product.title}
+              className="w-full aspect-[3/4] object-cover mb-6"
+            />
+          
+          </div>
           <div className="mt-4 flex gap-2">
-            {imageUrl && (
               <img
-                src={imageUrl}
+                src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image?.formats?.medium?.url}`}
                 alt={product.title}
                 className="cursor-crosshair w-16 h-16 object-cover border"
               />
 
-            )}
+{imageUrl && (
+            <img
+              src={imageUrl}
+              alt={product.title}
+              className="cursor-crosshair w-16 h-16 object-cover mb-6"
+            />
+          )}
+
+            
           </div>
+          
         </div>
 
         {/* Right side - Product details */}
-        <div className="md:w-1/2">
+        <div className="md:w-1/2 font-extrabold ">
           <div className="flex items-center mb-2">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="text-yellow-400" fill="currentColor" size={20} />
             ))}
-            <span className="ml-2 text-sm">1 review</span>
+            <span className="ml-2 text-sm">4.1 review</span>
           </div>
-          <h1 className="text-3xl font-bold mb-2 font-zahid">{product.title}</h1>
-          <p className="mb-2 font-zahid">{product.discription}</p>
-          <p className="mb-2 font-zahid">{product.discription1}</p>
-          <p className="text-2xl font-bold mb-4 font-zahid">{`Rs.${product.price}`}</p>
+          <h1 className="text-3xl font-bold mb-2 font-zahid ">{product.title}</h1>
+          <p className="mb-2 font-zahid py-3 ">{product.description}</p>
+          <p className="mb-2 font-zahid ">{product.discription1}</p>
+          <p className="text-2xl font-bold mb-4 font-zahid tracking-wider">{`Rs.${product.price}`}</p>
+       {/* Color Swatches */}
+       <div className="mb-4 py-1">
+            <h3 className="font-bold mb-2 ">Colors:</h3>
+            <div className="flex gap-2">
+              {colars.map((color, index) => (
+                <div
+                  key={index}
+                  onClick={() => handleColorSelect(color)}
+                  className={`w-8 h-8 rounded-full border-2 cursor-pointer ${
+                    selectedColor === color ? "px-3 py-2 border-black" : " border-gray-50"
+                  }`}
+                  style={{ backgroundColor: color.title }} // Assuming `color.code` contains the hex value
+                ></div>
+              ))}
+            </div>
+          </div>
+
+   <div className='mb-2 font-extrabold' >
+   <h3 className="font-bold mb-2">Sizes:</h3>
+   <div className='flex gap-1'>
+   {sizes.map((size, index) => (
+  <button
+    key={index}
+    onClick={() => handleSizeSelect(size)}
+    className={`px-4 py-2 border rounded-full font-zahid  mb-6 gap-3 ${
+      selectedSize === size ? "bg-black text-white" : "bg-white text-black"
+    }`}
+  >
+    {typeof size === 'string' ? size : JSON.stringify(size)} {/* Debug if necessary */}
+  </button>
+))}
+   </div>
+   </div>
+
+
+  
+
 
 
           <div className="border-t">
-            <div className="flex  gap-4">
+            <div className="flex  gap-4 py-5">
               <span className="font-zahid">Subtotal:</span>
               <span className="font-zahid">Rs {subtotal}</span>
             </div>
 
           </div>
-
-
           <div className="flex items-center gap-4 mb-4">
 
             <div className="flex items-center border">
@@ -108,7 +188,11 @@ const ProductDetail = () => {
                 <Plus size={20} />
               </button>
             </div>
-            <button className="bg-black text-white px-6 py-2 flex-grow" onClick={handleAddToCart}>
+            <button className="bg-black text-white px-6 py-2 flex-grow 
+             border border-black 
+         hover:bg-white hover:text-black hover:border-black 
+         transition duration-300
+            " onClick={handleAddToCart}>
               {/* TODO: implement the strapi */}
               ADD TO CART
 
@@ -124,7 +208,7 @@ const ProductDetail = () => {
 
 
 
-          <div className="border-t pt-4">
+          <div className="border-t pt-4  font-extrabold ">
       {/* About The Fragrance Section */}
       <details className="mb-2">
         <summary className="flex justify-between items-center cursor-pointer">

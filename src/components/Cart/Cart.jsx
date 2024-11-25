@@ -135,7 +135,7 @@ function Cart({isOpen, onClose}) {
                       className="flex items-start space-x-4 border-b pb-4"
                     >
                       <img
-                        className="w-20 h-20 object-cover rounded"
+                        className="w-28 h-32 object-cover rounded"
                         src={product.img}
                         alt={product.title}
                       />
@@ -159,6 +159,11 @@ function Cart({isOpen, onClose}) {
                 <Plus size={20} />
               </button>
             </div>            */}
+
+                        <p className="font-bold font-zahid ">Size: {product.size}</p>
+                        <p>Color: {product.color?.title || product.color}</p> {/* Adjust to match your data */}
+
+            
                       Quantity : {product.quantity}
                              </div>
                           </span>

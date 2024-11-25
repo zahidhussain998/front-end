@@ -13,7 +13,9 @@ import { add } from '@/store/cartReducer';
 
 function CustomProductCarouse({type = "bestsellers"}) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(1); // default for mobile
+  const [itemsPerPage, setItemsPerPage] = useState(1);
+  const [selectedImg, setSelectedImg] = useState("img");
+
   
   
   const { data, loding, error } = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`);
@@ -111,8 +113,9 @@ function CustomProductCarouse({type = "bestsellers"}) {
                                 src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1?.[0]?.formats?.large?.url || '/path/to/placeholder.jpg'}`}
                                 alt={product.title}
                                 className="w-full aspect-[3/4] object-cover mb-3 hover:underline"
+                                
                               />
-  
+                                  
   
                             </motion.div>
                           </div>

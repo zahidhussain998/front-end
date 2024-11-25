@@ -69,11 +69,16 @@ function List({ selected, catId, maxPrice, sort, minPrice }) {
             <TransitionLink
               to={`/product/${item.documentId}`}
               label={
-                <img
-                  src={`${import.meta.env.VITE_APP_UPLOAD_URL}${item.image1[0]?.formats?.large?.url}`}
-                  alt={item.title || "Product Image"}
-                  className="w-full h-full object-fit "
-                />
+                <div>
+
+
+                  <img
+                    src={`${import.meta.env.VITE_APP_UPLOAD_URL}${item.image1[0]?.formats?.large?.url}`}
+                    alt={item.title || "Product Image"}
+                    className={`w-full h-full object-fit`}
+                  />
+                 
+                </div>
               }
             />
           </div>
@@ -115,17 +120,21 @@ function List({ selected, catId, maxPrice, sort, minPrice }) {
           key={item.documentId}
           to={`/product/${item.documentId}`}
           label={
+            <>
+            
             <img
               src={`${import.meta.env.VITE_APP_UPLOAD_URL}${item.image1[0]?.formats?.large?.url}`}
               alt={item.title || "Product Image"}
               className="w-full aspect-[3/4] object-cover mb-6"
             />
+          
+            </>
           }
         />
         <Link to={`/product/${item.id}`} className="font-semibold font-zahid text-nowrap">
           {item.title || item.name}
         </Link>
-        <p>{item.description}</p>
+        {/* <p>{item.description}</p> */}
         <p className="font-bold font-zahid">Rs {item.price}</p>
       </div>
     );
