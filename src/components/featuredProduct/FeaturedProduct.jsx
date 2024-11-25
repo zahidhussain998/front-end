@@ -18,7 +18,7 @@ function CustomProduct({ type = 'featured' }) {
   const [hover, setHover] = useState(false)
   const { data, loding, error } = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`);
 
-  console.log(data)
+  // console.log(data)
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
