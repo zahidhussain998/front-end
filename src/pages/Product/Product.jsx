@@ -135,23 +135,17 @@ const ProductDetail = () => {
        <div className="mb-4 py-1">
             <h3 className="font-bold mb-2 ">Colors:</h3>
             <div className="flex gap-2">
-  {colars.length > 0 ? (
-    colars.map((color, index) => (
-      <div
-        key={index}
-        onClick={() => handleColorSelect(color)}
-        className={`w-8 h-8 rounded-full border-2 cursor-pointer ${
-          selectedColor === color ? "px-3 py-2 border-black" : "border-gray-50"
-        }`}
-        style={{ backgroundColor: color.title || "#FFFFFF" }} // Fallback color
-      >
-        <span className="sr-only">{color.title}</span>
-      </div>
-    ))
-  ) : (
-    <div>No colors available</div>
-  )}
-</div>
+              {colars.map((color, index) => (
+                <div
+                  key={index}
+                  onClick={() => handleColorSelect(color)}
+                  className={`w-8 h-8 rounded-full border-2 cursor-pointer ${
+                    selectedColor === color ? "px-3 py-2 border-black" : " border-gray-50"
+                  }`}
+      style={{ backgroundColor: color.colar }} // Use the `colar` property for color
+                ></div>
+              ))}
+            </div>
           </div>
 
    <div className='mb-2 font-extrabold' >
