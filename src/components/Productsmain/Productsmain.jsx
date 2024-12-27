@@ -15,8 +15,10 @@ function Productsmain() {
 
 
     const data = [
-     { image1: 'Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_0.jpg'},
-     { image1: 'Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_1 (2).jpg'}
+    { image1: 'bann.jpg'},
+    { image1: 'Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_3 (1).jpg'},
+    { image1: 'Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_0.jpg'},
+    { image1: 'Leonardo_Phoenix_hey_create_the_banner_D4_designer_Aroma_candl_1 (2).jpg'},
     ]
 
     

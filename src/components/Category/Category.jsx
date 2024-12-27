@@ -75,18 +75,16 @@ function CustomProductCarousel({ type = "Category" }) {
                           <img
                             src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1?.[0]?.formats?.large?.url || '/path/to/placeholder.jpg'}`}
                             alt={product.title}
-                            className={`w-full aspect-[3/4] object-cover mb-3 hover:underline ${
-                              hover ? 'opacity-0' : 'opacity-100'
-                            }` }
+                            className={`w-full aspect-[3/4] object-cover mb-3 hover:underline` }
                           />
 
 
-                          <img
+                          {/* <img
                             src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image.formats.large.url}`}
                             alt={product.title}
                             className={`absolute top-0 left-0 w-full aspect-[3/4] object-cover transition-opacity duration-300 ${
                               hover ? 'opacity-100' : 'opacity-0'}`}
-                          />
+                          /> */}
                         </motion.div>
 
 

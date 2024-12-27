@@ -11,12 +11,21 @@ const ProductDetail = () => {
   const [subtotal, setSubtotal] = useState(0)
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null); // To track the selected color
+  const [isLiked, setIsLiked] = useState(false);
 
     const { id } = useParams();
 
   const { data, error } = useFetch(`/products/${id}?populate=*`);
 
-
+  const handleShare = async () => {
+    const productUrl = `${window.location.origin}/product/${id}`;
+    try {
+      await navigator.clipboard.writeText(productUrl);
+      alert('Product link copied to clipboard!');
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  };
   const handleSizeSelect = (size) => {
     setSelectedSize(size);
   };
@@ -26,6 +35,12 @@ const ProductDetail = () => {
     setSelectedColor(color);
   };
 
+
+ 
+
+    const handleLike = () => {
+      setIsLiked(!isLiked);
+    }
   
   
   const product = data;
@@ -120,7 +135,7 @@ const ProductDetail = () => {
         </div>
 
         {/* Right side - Product details */}
-        <div className="md:w-1/2 font-extrabold ">
+        <div className="md:w-1/2 ">
           <div className="flex items-center mb-2">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="text-yellow-400" fill="currentColor" size={20} />
@@ -197,12 +212,19 @@ const ProductDetail = () => {
               ADD TO CART
 
             </button>
-            <button className="border p-2 rounded-full">
-              <Heart size={20} />
-            </button>
-            <button className="border p-2 rounded-full">
-              <Share2 size={20} />
-            </button>
+            <button
+      className={`border p-2 rounded-full ${isLiked ? 'text-red-500' : 'text-gray-500'}`}
+      onClick={handleLike}
+    >
+      <Heart size={20} />
+    </button>
+     <button
+     className='border p-2 rounded-full'
+      onClick={handleShare}
+     >
+      <Share2 size={20} />
+
+     </button>
 
           </div>
 
@@ -212,35 +234,18 @@ const ProductDetail = () => {
       {/* About The Fragrance Section */}
       <details className="mb-2">
         <summary className="flex justify-between items-center cursor-pointer">
-          <span className="font-bold">About The Fragrance</span>
+          <span className="font-bold">About The product</span>
           <ChevronDown size={20} />
         </summary>
         <p className="mt-2 text-sm">
-          A delightful medley of orange, pineapple, and cherry, dancing with notes of strawberry and peach, culminating in a harmonious whisper of musk.
+        <span className='font-bold'>{product.productd}<br/></span>
+
         </p>
-        <p className="mt-2 text-sm font-bold">Fragrance Notes:</p>
-        <p className="text-sm">
-          <span className="font-bold">Top Notes:</span> Orange | Pineapple | Cherry<br />
-          <span className="font-bold">Middle Notes:</span> Strawberry | Peach<br />
-          <span className="font-bold">Base Notes:</span> Musk
-        </p>
+       
       </details>
 
       {/* Product Details Section */}
-      <details className="mb-2">
-        <summary className="flex justify-between items-center cursor-pointer">
-          <span className="font-bold">Product Details</span>
-          <ChevronDown size={20} />
-        </summary>
-        <p className="mt-2 text-sm">
-          <span className="font-bold">Name:</span> Deluxe Candle<br />
-          <span className="font-bold">Burn Time:</span> 40-45 Hours<br />
-          <span className="font-bold">Net Weight:</span> 270g<br />
-          <span className="font-bold">Wax:</span> Premium Grade Bees-soy Wax Blend<br />
-          <span className="font-bold">Wick:</span> 100% Natural Cotton Fiber<br />
-          <span className="font-bold">Dimensions:</span> W 8.5cm x H 9.3cm
-        </p>
-      </details>
+    
 
       {/* Disclaimer Section */}
       <details className="mb-2">

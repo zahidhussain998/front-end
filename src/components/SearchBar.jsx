@@ -74,21 +74,21 @@ const SearchBar = () => {
                     <ul>
                       {searchResults.map((product) => (
                         <ScrollArea key={product.id} className="p-4 border-b last:border-none">
+                          <Link to={`/product/${product.documentId}`} className="flex gap-4">
                           <div className='flex'>
 
-                          <Link to={`/product/${product.documentId}`} className="flex gap-4">
                             <img
                               src={`${import.meta.env.VITE_APP_UPLOAD_URL}${product.image1[0].formats.large.url}`}
                               alt={product.title}
                               className="w-16 h-16 object-cover"
                             />
-                          </Link>
                           <div className='ml-4'>
                             <span className="text-black hover:underline font-zahid ">{product.title || product.name}</span>
                             <span className='flex '>Rs {product.price}</span>
 
                           </div>
                           </div>
+                          </Link>
                             {/* <span className="text-black hover:underline font-zahid ml-16">{product.discription}</span> */}
                         </ScrollArea>
                       ))}

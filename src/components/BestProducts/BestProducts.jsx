@@ -129,12 +129,16 @@ function CustomProductCarouse({type = "bestsellers"}) {
                       </p>
   
                       <motion.div
-  className="bg-black text-white py-3 px-8 sm:px-10 md:px-12 lg:px-10 mt-3 border border-black 
-         hover:bg-white hover:text-black hover:border-black 
-         transition duration-300 text-center"
+  className=""
 >
   <button
-    className="whitespace-nowrap"
+    className="whitespace-nowrap
+    flex-grow
+                      bg-black text-white py-3 px-8 sm:px-10 md:px-12 lg:px-10 mt-3 border border-black 
+         hover:bg-white hover:text-black hover:border-black 
+         transition duration-300 text-center 
+    
+    "
     onClick={() => handlePay(product)}
   >
     Add To Cart

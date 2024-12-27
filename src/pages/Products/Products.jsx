@@ -149,7 +149,6 @@ function Products() {
           <div className="text-sm breadcrumbs">
             <ul className="flex space-x-4">
               <li><Link to="/">Home</Link></li>
-              {catId && <li>Category Name</li>}
             </ul>
           </div>
           <div className="space-y-4">

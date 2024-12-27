@@ -7,15 +7,20 @@ import Products from './pages/Products/Products.jsx';
 import Product from './pages/Product/Product.jsx';
 import {RouterProvider } from "react-router-dom";
 import Slider from './components/Slider/Slider';
+import ErrorBoundary from './components/ErrorBoundary';
+import Success from './components/Success';
 
 
 
 const Layout = () => {
   return (
     <div className="">
+      <ErrorBoundary>
+
       <Navbar />
       <Outlet />
       <Footer />
+      </ErrorBoundary>
     </div>
   );
 };
@@ -41,7 +46,12 @@ const router = createBrowserRouter([
       {
         path: "product/1",
         element: <Slider/>,
-      }
+      },
+      {
+        path: "/success",
+        element: <Success />,
+      },
+
     ],
   },
 ]);
